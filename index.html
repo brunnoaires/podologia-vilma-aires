@@ -1,151 +1,312 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vilma Aires · Podóloga ao Domicílio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vilma Aires · Podóloga em domicílio em Goiânia</title>
+  <meta name="description" content="Podologia clínica na sua casa, em Goiânia e região. Calos, unha encravada e prevenção do pé diabético, com instrumentos esterilizados em autoclave. Agende pelo WhatsApp." />
+  <meta name="theme-color" content="#0B6E6D" />
+  <link rel="icon" href="logo.png" />
+  <link rel="preload" href="fonts/atkinson-hyperlegible-next-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<nav>
-  <a class="logo" href="#">
-    <img class="logo-img" src="logo.png" alt="Vilma Aires Podóloga"/>
-  </a>
-  <ul>
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#como-funciona">Como Funciona</a></li>
-    <li><a href="#testemunhos">Testemunhos</a></li>
-    <li><a href="https://wa.me/556285585102" class="nav-cta">Marcar Consulta</a></li>
-  </ul>
-</nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.7.63.7.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.88 9.88 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.88 9.88zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L0 24l6.34-1.66a11.88 11.88 0 0 0 5.7 1.45h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41z"/></symbol>
+  <symbol id="i-cert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m9 14.5-1.5 7L12 19l4.5 2.5-1.5-7"/><path d="m9.5 9 1.8 1.8L14.8 7.3"/></g></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 4.5 5.6v6c0 4.6 3.1 8.2 7.5 9.6 4.4-1.4 7.5-5 7.5-9.6v-6z"/><path d="m8.8 12 2.2 2.2 4.3-4.4"/></g></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v11h13V9"/><path d="M10 20v-5.5h4V20"/></g></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20.2c0-3.7 3.1-6.2 7-6.2s7 2.5 7 6.2"/></g></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2.5-6.5 4.5 13 2.5-6.5H21"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+</svg>
 
-<section class="hero">
-  <div class="hero-left">
-    <span class="hero-badge">Serviço 100% ao Domicílio</span>
-    <h1>
-      Cuidados de podologia
-      <em>na comodidade<br/>da sua casa</em>
-    </h1>
-    <p class="hero-desc">Tratamentos profissionais para os seus pés, realizados por uma podologista certificada. Sem filas, sem deslocações — o bem-estar chega até você.</p>
-    <div class="hero-actions">
-      <a href="https://wa.me/556285585102" class="btn-primary">Marcar Agora</a>
-      <a href="#servicos" class="btn-outline">Ver Serviços</a>
-    </div>
-    <div class="hero-stats">
-      <div><span class="stat-num">500+</span><span class="stat-label">Clientes Satisfeitos</span></div>
-      <div><span class="stat-num">10+</span><span class="stat-label">Anos de Experiência</span></div>
-      <div><span class="stat-num">100%</span><span class="stat-label">Ao Domicílio</span></div>
-    </div>
+<a class="skip" href="#agendar">Pular para o agendamento</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#topo" aria-label="Vilma Aires, podóloga, início">
+      <span class="brand-mark"><img src="logo.png" alt="" width="500" height="500" /></span>
+      <span class="brand-text"><strong>Vilma Aires</strong><span>Podóloga em domicílio</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Seções">
+      <a href="#servicos">Serviços</a>
+      <a href="#visita">Como é a visita</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a class="btn btn-small" href="#agendar">Agendar</a>
   </div>
+</header>
 
-  <div class="hero-right">
-    <div class="hero-image-container">
-      <img src="logo.png" alt="Vilma Aires Podologia" class="hero-logo-img"/>
-      <div class="hero-logo-glow"></div>
+<main id="topo">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1 id="hero-title">Podologia na sua casa, em&nbsp;Goiânia.</h1>
+        <p class="lede"><span class="lede-long">Calos, unha encravada e cuidado do pé diabético, feitos por uma podóloga certificada, com instrumentos esterilizados em autoclave. Sem trânsito e sem sala de espera.</span><span class="lede-short">Cuidado clínico dos pés sem sair de casa.</span></p>
+      </div>
+
+      <form class="booking" id="agendar" aria-labelledby="booking-title" novalidate>
+        <h2 id="booking-title" class="booking-title">Marque sua visita</h2>
+
+        <fieldset>
+          <legend>Para quem é o atendimento?</legend>
+          <div class="options two">
+            <label class="opt"><input type="radio" name="quem" value="mim" checked /><span><svg aria-hidden="true"><use href="#i-check"/></svg>Para mim</span></label>
+            <label class="opt"><input type="radio" name="quem" value="familiar" /><span><svg aria-hidden="true"><use href="#i-check"/></svg>Para um familiar</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Qual cuidado?</legend>
+          <div class="options stack">
+            <label class="opt"><input type="radio" name="servico" value="Calos e calosidades" checked /><span><svg aria-hidden="true"><use href="#i-check"/></svg>Calos e calosidades</span></label>
+            <label class="opt"><input type="radio" name="servico" value="Unha encravada" /><span><svg aria-hidden="true"><use href="#i-check"/></svg>Unha encravada</span></label>
+            <label class="opt"><input type="radio" name="servico" value="Prevenção do pé diabético" /><span><svg aria-hidden="true"><use href="#i-check"/></svg>Prevenção do pé diabético</span></label>
+            <label class="opt"><input type="radio" name="servico" value="Ainda não sei, preciso de avaliação" /><span><svg aria-hidden="true"><use href="#i-check"/></svg>Não sei, quero uma avaliação</span></label>
+          </div>
+        </fieldset>
+
+        <div class="row-fields">
+          <fieldset>
+            <legend>Melhor período</legend>
+            <div class="options two">
+              <label class="opt"><input type="radio" name="periodo" value="manhã" checked /><span><svg aria-hidden="true"><use href="#i-check"/></svg>Manhã</span></label>
+              <label class="opt"><input type="radio" name="periodo" value="tarde" /><span><svg aria-hidden="true"><use href="#i-check"/></svg>Tarde</span></label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="bairro">Bairro <span class="optional">(opcional)</span></label>
+            <input id="bairro" name="bairro" type="text" autocomplete="address-level3" placeholder="Ex.: Setor Bueno" maxlength="60" />
+          </div>
+        </div>
+
+        <a class="btn btn-whatsapp btn-block" id="enviar" href="https://wa.me/5562985585102" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+          Continuar no WhatsApp
+        </a>
+        <p class="booking-note">Você revisa a mensagem no WhatsApp antes de enviar. A Vilma responde e combina o dia e o horário.</p>
+
+        <div class="preview">
+          <span class="preview-label">Mensagem que será enviada</span>
+          <p class="bubble" id="mensagem"></p>
+        </div>
+      </form>
+
+      <ul class="facts" aria-label="Por que confiar">
+        <li class="fact"><svg aria-hidden="true"><use href="#i-cert"/></svg><p><strong>Podóloga formada</strong>Formação em podologia e cursos de aperfeiçoamento.</p></li>
+        <li class="fact"><svg aria-hidden="true"><use href="#i-shield"/></svg><p><strong>Esterilização em autoclave</strong>Todo instrumento chega esterilizado à sua casa.</p></li>
+        <li class="fact"><svg aria-hidden="true"><use href="#i-home"/></svg><p><strong>Só em domicílio</strong>O consultório vai até você, sempre.</p></li>
+      </ul>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="certificados" class="section-padding">
-  <div class="container">
-    <h2 class="section-title">Porquê Escolher os Nossos Serviços?</h2>
-    <div class="grid-3">
-      <div class="why-card">
-        <h3>Formação Certificada</h3>
-        <p>Profissional totalmente qualificada, diplomada e atualizada com as melhores práticas clínicas de podologia.</p>
+  <section class="section section-tint" id="vilma" aria-labelledby="vilma-title">
+    <div class="wrap split">
+      <div class="split-head">
+        <h2 id="vilma-title">Quem cuida de você é a própria Vilma</h2>
+        <p>Maria Vilma Monteiro Aires é podóloga formada pelo Instituto Climppé, em Goiânia, com cursos de aperfeiçoamento em unha encravada e outras técnicas para unhas e pés.</p>
+        <p>Não há equipe nem rodízio: quem agenda, avalia e trata é sempre ela.</p>
       </div>
-      <div class="why-card">
-        <h3>Rigor e Esterilização</h3>
-        <p>Utilização de equipamentos de ponta e materiais estritamente esterilizados em autoclave para a sua total segurança.</p>
-      </div>
-      <div class="why-card">
-        <h3>Conforto e Privacidade</h3>
-        <p>Evite trânsito e salas de espera chatas. O tratamento é realizado no ambiente acolhedor e seguro do seu lar.</p>
+      <div class="training">
+        <h3 class="training-title" id="formacao-title">Formação</h3>
+        <ol class="courses" aria-labelledby="formacao-title">
+          <li class="course course-main">
+            <span class="course-year">2018</span>
+            <div>
+              <p class="course-name">Formação em Podologia</p>
+              <p class="course-meta">Formação inicial e continuada · Instituto Climppé, Goiânia</p>
+            </div>
+          </li>
+        </ol>
+        <h3 class="training-title" id="aperfeicoamento-title">Aperfeiçoamento</h3>
+        <ol class="courses" aria-labelledby="aperfeicoamento-title">
+          <li class="course">
+            <span class="course-year">2019</span>
+            <div>
+              <p class="course-name">Onicoórteses corretivas das unhas</p>
+              <p class="course-meta">Correção da curvatura das unhas · Instituto Climppé</p>
+            </div>
+          </li>
+          <li class="course">
+            <span class="course-year">2019</span>
+            <div>
+              <p class="course-name">Onicocriptose com técnica de contrapressão</p>
+              <p class="course-meta">Workshop sobre unha encravada</p>
+            </div>
+          </li>
+          <li class="course">
+            <span class="course-year">2020</span>
+            <div>
+              <p class="course-name">Técnicas de espiculectomia</p>
+              <p class="course-meta">Instituto de Podologia e Saúde</p>
+            </div>
+          </li>
+          <li class="course">
+            <span class="course-year">2021</span>
+            <div>
+              <p class="course-name">Ácidos na podologia</p>
+              <p class="course-meta">Grupo AP Soluções Podológicas · curso on-line</p>
+            </div>
+          </li>
+          <li class="course">
+            <span class="course-year">2021</span>
+            <div>
+              <p class="course-name">Velaterapia e argiloterapia aplicadas à podologia</p>
+              <p class="course-meta">Escola de Podologia e Saúde</p>
+            </div>
+          </li>
+        </ol>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="servicos" class="section-padding bg-light">
-  <div class="container">
-    <h2 class="section-title">Serviços Especializados</h2>
-    <div class="grid-3">
-      <div class="service-card">
-        <h3>Tratamento de Calosidades</h3>
-        <p>Remoção indolor de calos, calosidades excessivas e fissuras nos calcanhares para devolver o conforto ao caminhar.</p>
+  <section class="section" id="servicos" aria-labelledby="servicos-title">
+    <div class="wrap split">
+      <div class="split-head">
+        <h2 id="servicos-title">O que a Vilma trata</h2>
+        <p>Cuidado clínico dos pés, não estético. Cada visita começa com uma avaliação do pé e termina com orientações para o dia a dia.</p>
+        <a class="link-arrow" href="#agendar">Escolher um cuidado <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
-      <div class="service-card">
-        <h3>Unhas Encravadas</h3>
-        <p>Tratamento especializado e preventivo de onicocriptose, aliviando a dor de forma rápida, higiénica e segura.</p>
+      <ol class="services">
+        <li class="service">
+          <h3>Calos e calosidades</h3>
+          <p>Remoção indolor de calos, de pele grossa em excesso e de rachaduras no calcanhar, para voltar a caminhar com conforto.</p>
+          <p class="for">Para quem sente dor ao andar ou tem o calcanhar rachado.</p>
+        </li>
+        <li class="service">
+          <h3>Unha encravada</h3>
+          <p>Tratamento da onicocriptose, a unha que entra na pele: alívio rápido da dor, com técnica higiênica e segura, e orientação para não voltar.</p>
+          <p class="for">Para quem tem dor, vermelhidão ou inflamação no canto da unha.</p>
+        </li>
+        <li class="service">
+          <h3>Prevenção do pé diabético</h3>
+          <p>Avaliação detalhada, corte correto das unhas e cuidados preventivos, essenciais para quem tem diabetes e precisa evitar feridas.</p>
+          <p class="for">Para pessoas com diabetes, em acompanhamento regular.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="visita" aria-labelledby="visita-title">
+    <div class="wrap">
+      <h2 id="visita-title" class="center-head">Como é a visita</h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-dot" aria-hidden="true">1</span>
+          <h3>Você chama no WhatsApp</h3>
+          <p>Conte qual é o cuidado, para quem é e o bairro. A Vilma combina com você o dia e o horário.</p>
+        </li>
+        <li class="step">
+          <span class="step-dot" aria-hidden="true">2</span>
+          <h3>A Vilma vai até a sua casa</h3>
+          <p>Ela leva todo o material clínico necessário, com os instrumentos esterilizados em autoclave.</p>
+        </li>
+        <li class="step">
+          <span class="step-dot" aria-hidden="true">3</span>
+          <h3>Avaliação e tratamento</h3>
+          <p>O atendimento acontece onde a pessoa se sente bem, com foco no alívio da dor e na saúde dos pés.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="higiene-title">
+    <div class="wrap split">
+      <div class="split-head">
+        <h2 id="higiene-title">Higiene de consultório, dentro de casa</h2>
+        <p>A autoclave esteriliza com vapor sob pressão e alta temperatura. É o mesmo padrão usado em clínicas e consultórios, e é ele que garante que cada instrumento chegue seguro até você.</p>
       </div>
-      <div class="service-card">
-        <h3>Prevenção do Pé Diabético</h3>
-        <p>Avaliação detalhada, corte correto de unhas e tratamentos preventivos vitais para doentes diabéticos.</p>
+      <ul class="checks">
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Instrumentos esterilizados em autoclave</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Material clínico completo levado a cada visita</li>
+        <li><svg aria-hidden="true"><use href="#i-check"/></svg>Atendimento individual, no seu ambiente</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section family" aria-labelledby="familia-title">
+    <div class="wrap">
+      <div class="family-panel">
+        <div class="family-copy">
+          <h2 id="familia-title">Marcando para seu pai, sua mãe ou sua avó?</h2>
+          <p>Muita gente agenda para um familiar que tem dificuldade para sair de casa. Você combina tudo pelo WhatsApp e pode acompanhar a visita, se quiser.</p>
+        </div>
+        <div class="family-info">
+          <p class="family-info-title" id="familia-info">Na mensagem, informe:</p>
+          <ul class="family-items" aria-labelledby="familia-info">
+            <li><svg aria-hidden="true"><use href="#i-user"/></svg>O nome da pessoa</li>
+            <li><svg aria-hidden="true"><use href="#i-home"/></svg>O endereço da visita</li>
+            <li><svg aria-hidden="true"><use href="#i-pulse"/></svg>Se ela tem diabetes ou dificuldade para andar</li>
+          </ul>
+        </div>
+        <a class="btn family-action" href="#agendar" data-quem="familiar">Agendar para um familiar <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="como-funciona" class="section-padding">
-  <div class="container">
-    <h2 class="section-title">Como Funciona o Atendimento?</h2>
-    <div class="steps-container">
-      <div class="step">
-        <span class="step-number">1</span>
-        <h3>Agendamento Fácil</h3>
-        <p>Entre em contacto através do WhatsApp ou telefone e agende o dia mais conveniente para si.</p>
-      </div>
-      <div class="step">
-        <span class="step-number">2</span>
-        <h3>Visita ao Domicílio</h3>
-        <p>Desloco-me até à sua residência levando comigo todo o ecossistema clínico esterilizado necessário.</p>
-      </div>
-      <div class="step">
-        <span class="step-number">3</span>
-        <h3>Cuidado Concluído</h3>
-        <p>Realização do diagnóstico e tratamento com total foco na saúde, bem-estar e alívio das suas dores.</p>
+  <section class="section" id="duvidas" aria-labelledby="duvidas-title">
+    <div class="wrap faq-wrap">
+      <h2 id="duvidas-title">Dúvidas frequentes</h2>
+      <div class="faq">
+        <details>
+          <summary>Onde a Vilma atende?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p>Em Goiânia e região. Diga o seu bairro no WhatsApp para confirmar o atendimento no seu endereço.</p>
+        </details>
+        <details>
+          <summary>O tratamento dói?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p>A remoção de calos é indolor, e o tratamento da unha encravada é feito para aliviar a dor, não para aumentá-la. Se algo incomodar, é só falar: o ritmo é o da pessoa atendida.</p>
+        </details>
+        <details>
+          <summary>O que preciso preparar em casa?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p>Só um lugar confortável para a pessoa se sentar, com boa luz. A Vilma leva todo o material.</p>
+        </details>
+        <details>
+          <summary>Tenho diabetes. Posso ser atendido?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p>Sim. A prevenção do pé diabético é um dos cuidados principais da Vilma. Avise no agendamento que você tem diabetes.</p>
+        </details>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="testemunhos" class="section-padding bg-light">
-  <div class="container">
-    <h2 class="section-title">O que dizem os nossos pacientes</h2>
-    <div class="grid-3">
-      <div class="testimonial-card">
-        <p class="testimonial-text">"Excelente profissional! Muito cuidadosa e atenciosa. Tratar os pés em casa é uma comodidade fantástica para quem tem mobilidade reduzida."</p>
-        <h4>– Maria Antónia</h4>
-      </div>
-      <div class="testimonial-card">
-        <p class="testimonial-text">"Recomendo a 100%. Tinha um problema crónico de unha encravada que foi resolvido sem qualquer dor. Muito limpa e profissional."</p>
-        <h4>– João Silva</h4>
-      </div>
-      <div class="testimonial-card">
-        <p class="testimonial-text">"Um alívio imediato para as minhas calosidades. A Vilma é extremamente simpática e o serviço ao domicílio funciona na perfeição."</p>
-        <h4>– Teresa Santos</h4>
-      </div>
+  <section class="closing" aria-labelledby="fim-title">
+    <div class="wrap closing-inner">
+      <h2 id="fim-title">Seus pés cuidados sem sair de casa.</h2>
+      <a class="btn btn-whatsapp" href="https://wa.me/5562985585102" target="_blank" rel="noopener">
+        <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+        Chamar a Vilma no WhatsApp
+      </a>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="footer-grid">
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
     <div class="footer-brand">
-      <img class="footer-logo-img" src="logo.png" alt="Vilma Aires Podóloga"/>
-      <p class="footer-desc">Cuidados podológicos profissionais ao domicílio, com rigor clínico e atenção personalizada para a saúde dos seus pés.</p>
+      <img src="logo.png" alt="Vilma Aires, podóloga" width="500" height="500" />
+    </div>
+    <div class="footer-info">
+      <p><strong>Vilma Aires · Podóloga</strong><br />Atendimento em domicílio em Goiânia e região</p>
+      <p class="footer-contact">
+        <a href="https://wa.me/5562985585102" target="_blank" rel="noopener">WhatsApp (62) 98558-5102</a>
+        <a href="tel:+5562985585102">Ligar para (62) 98558-5102</a>
+      </p>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2025 Vilma Aires Podologia · Todos os direitos reservados</span>
-    <span>Feito com ♥ para pés mais saudáveis</span>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Vilma Aires Podologia</span>
   </div>
 </footer>
 
-<a href="https://wa.me/556285585102" class="whatsapp-btn" title="Falar pelo WhatsApp" target="_blank">
-  <svg viewBox="0 0 24 24" width="32" height="32" fill="white" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.015-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.704 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
+<a class="wa-float" id="wa-float" href="https://wa.me/5562985585102" target="_blank" rel="noopener" aria-label="Falar com a Vilma pelo WhatsApp">
+  <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
 </a>
+
+<script src="main.js"></script>
+</body>
+</html>

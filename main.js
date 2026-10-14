@@ -1,125 +1,114 @@
 /* ============================================================
-   Vilma Aires · Podologia ao Domicílio — main.js
+   Vilma Aires · Podologia em domicílio — main.js
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── NAV: adiciona classe "scrolled" ao fazer scroll ── */
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
+  const WHATSAPP = '5562985585102';
 
-  /* ── SCROLL REVEAL: anima elementos ao entrarem no viewport ── */
-  const revealEls = document.querySelectorAll(
-    '.why-card, .service-card, .step, .testimonial-card'
-  );
+  /* ── HEADER: borda ao rolar ── */
+  const header = document.querySelector('.site-header');
+  const waFloat = document.getElementById('wa-float');
+  const form = document.getElementById('agendar');
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 8);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ── BOTÃO FLUTUANTE: aparece só quando o formulário sai da tela ── */
+  if (waFloat && form && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      const passed = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+      waFloat.classList.toggle('show', passed);
+    }).observe(form);
+  } else if (waFloat) {
+    waFloat.classList.add('show');
+  }
+
+  /* ── AGENDAMENTO: monta a mensagem do WhatsApp ── */
+  const bubble = document.getElementById('mensagem');
+  const send = document.getElementById('enviar');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const value = (name) => {
+    const el = form.querySelector(`[name="${name}"]:checked`);
+    return el ? el.value : '';
+  };
+
+  const buildMessage = () => {
+    const quem = value('quem') === 'familiar'
+      ? 'para um familiar'
+      : 'para mim';
+    const servico = value('servico');
+    const periodo = value('periodo');
+    const bairro = form.bairro.value.trim();
+
+    const lines = [
+      `Olá, Vilma! Gostaria de agendar uma visita de podologia ${quem}.`,
+      `Cuidado: ${servico}`,
+      `Melhor período: ${periodo}`,
+    ];
+    if (bairro) lines.push(`Bairro: ${bairro}`);
+    return lines.join('\n');
+  };
+
+  let last = '';
+  const update = (animate = true) => {
+    const text = buildMessage();
+    if (text === last) return;
+    bubble.textContent = text;
+    send.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+    if (last && animate && !reduceMotion) {
+      bubble.classList.remove('changed');
+      void bubble.offsetWidth;
+      bubble.classList.add('changed');
+    }
+    last = text;
+  };
+
+  if (form && bubble && send) {
+    update();
+    let typing;
+    form.addEventListener('change', () => update());
+    form.bairro.addEventListener('input', () => {
+      clearTimeout(typing);
+      typing = setTimeout(() => update(false), 400);
     });
-  }, { threshold: 0.12 });
-
-  revealEls.forEach((el, i) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(28px)';
-    el.style.transition = `opacity 0.55s ${i * 0.07}s ease, transform 0.55s ${i * 0.07}s ease`;
-    revealObserver.observe(el);
-  });
-
-  // Classe "visible" aplica a transição
-  const style = document.createElement('style');
-  style.textContent = '.visible { opacity: 1 !important; transform: translateY(0) !important; }';
-  document.head.appendChild(style);
-
-  /* ── MENU MOBILE: hamburger toggle ── */
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu   = document.querySelector('nav ul');
-
-  if (hamburger && navMenu) {
-    hamburger.addEventListener('click', () => {
-      const isOpen = navMenu.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', isOpen);
-    });
-
-    // Fecha o menu ao clicar num link
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      send.click();
     });
   }
 
-  /* ── SMOOTH SCROLL para âncoras internas ── */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  /* ── "Agendar para um familiar" pré-seleciona a opção ── */
+  document.querySelectorAll('[data-quem]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const radio = form.querySelector(`[name="quem"][value="${link.dataset.quem}"]`);
+      if (radio) {
+        radio.checked = true;
+        update();
+      }
+    });
+  });
+
+  /* ── ÂNCORAS: compensa o cabeçalho fixo ── */
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        const offset = nav ? nav.offsetHeight : 80;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
+      const id = anchor.getAttribute('href');
+      if (id.length < 2) return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      const offset = header ? header.offsetHeight + 12 : 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
+      if (id === '#agendar') {
+        const first = form.querySelector('input:checked') || form.querySelector('input');
+        if (first) first.focus({ preventScroll: true });
       }
     });
   });
-
-  /* ── CONTADORES animados nos stats do hero ── */
-  const counters = document.querySelectorAll('.stat-num');
-
-  const countObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el    = entry.target;
-      const raw   = el.textContent.trim();           // ex: "500+" ou "10+" ou "100%"
-      const num   = parseInt(raw.replace(/\D/g, ''), 10);
-      const suffix = raw.replace(/[0-9]/g, '');      // "+" ou "%"
-      const duration = 1200;
-      const step  = Math.ceil(num / (duration / 16));
-      let current = 0;
-
-      const tick = () => {
-        current = Math.min(current + step, num);
-        el.textContent = current + suffix;
-        if (current < num) requestAnimationFrame(tick);
-      };
-
-      requestAnimationFrame(tick);
-      countObserver.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach(c => countObserver.observe(c));
-
-  /* ── TOOLTIP no botão WhatsApp ── */
-  const waBtn = document.querySelector('.whatsapp-btn');
-  if (waBtn) {
-    const tooltip = document.createElement('span');
-    tooltip.textContent = 'Falar pelo WhatsApp';
-    tooltip.style.cssText = `
-      position: absolute;
-      right: 70px;
-      background: #25D366;
-      color: #fff;
-      font-size: 0.78rem;
-      font-family: 'Lato', sans-serif;
-      font-weight: 700;
-      padding: 0.4rem 0.9rem;
-      border-radius: 20px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s;
-    `;
-    waBtn.style.position = 'fixed';
-    waBtn.appendChild(tooltip);
-
-    waBtn.addEventListener('mouseenter', () => { tooltip.style.opacity = '1'; });
-    waBtn.addEventListener('mouseleave', () => { tooltip.style.opacity = '0'; });
-  }
 
 });
