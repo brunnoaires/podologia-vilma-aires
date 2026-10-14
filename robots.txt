@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vilmaairespodologia.com.br/sitemap.xml
